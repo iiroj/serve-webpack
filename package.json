@@ -1,0 +1,83 @@
+{
+  "name": "webpack-serve",
+  "version": "0.0.1",
+  "description": "Filesystem-based webpack development server with HMR support",
+  "author": "Iiro Jäppinen <iiro@jappinen.fi> (https://iiro.fi)",
+  "license": "MIT",
+  "homepage": "https://github.com/iiroj/webpack-serve",
+  "repository": "github:iiroj/webpack-serve",
+  "bugs": "https://github.com/iiroj/webpack-serve/issues",
+  "main": "dist/handler.js",
+  "bin": "dist/bin.js",
+  "engines": {
+    "node": ">= 12.10"
+  },
+  "scripts": {
+    "lint": "eslint --ext .ts,.js .",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "tsc --build tsconfig.build.json",
+    "watch": "npm run build -- --watch",
+    "version": "standard-version --no-verify"
+  },
+  "lint-staged": {
+    "*.{ts}": "eslint --ext .ts"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm run lint && npm run typecheck && npm test && npm run build"
+    }
+  },
+  "peerDependencies": {
+    "webpack": "4.41.1"
+  },
+  "dependencies": {
+    "lodash.defaultsdeep": "4.6.1",
+    "serve-handler": "6.1.2",
+    "ws": "7.1.2",
+    "yargs": "14.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
+    "@types/lodash.defaultsdeep": "4.6.6",
+    "@types/node": "^12.7.12",
+    "@types/serve-handler": "6.1.0",
+    "@types/webpack": "4.39.3",
+    "@types/webpack-merge": "^4.1.5",
+    "@types/ws": "6.0.3",
+    "@types/yargs": "^13.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "commitlint": "^8.2.0",
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "standard-version": "^7.0.0",
+    "typescript": "^3.6.4",
+    "webpack": "4.41.1"
+  },
+  "keywords": [
+    "dev-server",
+    "hmr",
+    "hot module replacement",
+    "hot reload",
+    "hot",
+    "serve",
+    "server",
+    "webpack"
+  ]
+}
