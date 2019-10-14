@@ -15,30 +15,42 @@ export const useHotMiddleware = (
 
   let latestStats: Stats.ToJsonOutput;
 
-  const createInvalidHandler = (status: string) => (): void => {
+  compiler.hooks.watchRun.tap("serve-webpack", () => {
     ws.clients.forEach(ws => {
       if (!(ws as OnlineWebSocket).online) return ws.ping();
-      ws.send({ hash: latestStats.hash, builtAt: latestStats.builtAt, status });
-    });
-  };
-
-  compiler.hooks.invalid.tap("webpack-serve", createInvalidHandler("invalid"));
-  compiler.hooks.compile.tap("webpack-serve", createInvalidHandler("compile"));
-
-  compiler.hooks.done.tap("webpack-serve", stats => {
-    const jsonStats = stats.toJson({ all: false, hash: true, builtAt: true });
-    const isUpdated = jsonStats.hash !== latestStats.hash;
-    if (isUpdated) latestStats = jsonStats;
-    ws.clients.forEach(ws => {
-      if (!(ws as OnlineWebSocket).online) return ws.ping();
-      if (isUpdated) ws.send({ ...jsonStats, status: "done" });
+      ws.send(JSON.stringify({ type: "start", payload: latestStats.hash }));
     });
   });
 
-  compiler.hooks.failed.tap("webpack-server", error => {
+  compiler.hooks.done.tap("serve-webpack", stats => {
+    const jsonStats = stats.toJson({ all: false, hash: true, modules: true });
+    latestStats = jsonStats;
+
+    const modules =
+      jsonStats.modules &&
+      jsonStats.modules.reduce(
+        (obj, mod) => {
+          obj[mod.id] = mod.name;
+          return obj;
+        },
+        {} as Record<string, string>
+      );
+
     ws.clients.forEach(ws => {
       if (!(ws as OnlineWebSocket).online) return ws.ping();
-      ws.send({ status: "error", message: error.message });
+      ws.send(
+        JSON.stringify({
+          type: "done",
+          payload: { hash: jsonStats.hash, modules }
+        })
+      );
+    });
+  });
+
+  compiler.hooks.failed.tap("serve-webpackr", error => {
+    ws.clients.forEach(ws => {
+      if (!(ws as OnlineWebSocket).online) return ws.ping();
+      ws.send(JSON.stringify({ type: "error", payload: error.message }));
     });
   });
 };

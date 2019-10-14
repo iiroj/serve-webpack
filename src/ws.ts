@@ -9,7 +9,15 @@ export const createWsServer = (
   server: Server,
   path: string
 ): WebSocket.Server => {
-  const ws = new WebSocket.Server({ server, path });
+  const ws = new WebSocket.Server({ server });
+
+  server.on("upgrade", (req, sock, head) => {
+    if (req.url === path) {
+      ws.handleUpgrade(req, sock, head, ws => {
+        ws.emit("connection", ws, req);
+      });
+    }
+  });
 
   ws.on("connection", (ws: OnlineWebSocket) => {
     ws.online = true;

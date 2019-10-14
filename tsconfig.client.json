@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["dom", "es2018"],
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": "."
+  },
+  "include": ["src/client.js"],
+  "exclude": ["dist", "./client.js"]
+}

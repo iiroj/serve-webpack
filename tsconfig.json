@@ -12,5 +12,6 @@
     "strictNullChecks": true,
     "target": "es6"
   },
-  "exclude": ["dist"]
+  "include": ["src"],
+  "exclude": ["dist", "src/client.js"]
 }

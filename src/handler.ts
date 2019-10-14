@@ -4,6 +4,7 @@ import webpack from "webpack";
 import { getConfig } from "./config";
 import { logger } from "./logger";
 import { useServeMiddleware } from "./serve";
+import { addEntries } from "./entrypoint";
 
 const watchHandler: webpack.ICompiler.Handler = (error, stats) => {
   if (error) {
@@ -34,15 +35,19 @@ type Argv = {
 };
 
 /**
- * Main webpack-serve handler
+ * Main serve-webpack handler
  * @param argv command-line arguments
  */
 export const handler = async ({ config, env, hot }: Argv): Promise<void> => {
   const { webpackConfig, serveConfig } = await getConfig(config, env);
 
+  if (hot) {
+    await addEntries(webpackConfig, serveConfig);
+  }
+
   const compiler = webpack(webpackConfig);
   compiler.watch(webpackConfig.watchOptions || {}, watchHandler);
-  compiler.hooks.compile.tap("webpack-serve", () =>
+  compiler.hooks.compile.tap("serve-webpack", () =>
     logger.info("compiling...")
   );
 

@@ -1,12 +1,12 @@
 {
-  "name": "webpack-serve",
+  "name": "serve-webpack",
   "version": "0.0.1",
-  "description": "Filesystem-based webpack development server with HMR support",
+  "description": "A simple and fast webpack development server with HMR support",
   "author": "Iiro Jäppinen <iiro@jappinen.fi> (https://iiro.fi)",
   "license": "MIT",
-  "homepage": "https://github.com/iiroj/webpack-serve",
-  "repository": "github:iiroj/webpack-serve",
-  "bugs": "https://github.com/iiroj/webpack-serve/issues",
+  "homepage": "https://github.com/iiroj/serve-webpack",
+  "repository": "github:iiroj/serve-webpack",
+  "bugs": "https://github.com/iiroj/serve-webpack/issues",
   "main": "dist/handler.js",
   "bin": "dist/bin.js",
   "engines": {
@@ -15,7 +15,7 @@
   "scripts": {
     "lint": "eslint --ext .ts,.js .",
     "typecheck": "tsc -p tsconfig.json",
-    "build": "tsc --build tsconfig.build.json",
+    "build": "tsc --build tsconfig.build.json tsconfig.hot.json",
     "watch": "npm run build -- --watch",
     "version": "standard-version --no-verify"
   },
@@ -53,6 +53,7 @@
     "@types/node": "^12.7.12",
     "@types/serve-handler": "6.1.0",
     "@types/webpack": "4.39.3",
+    "@types/webpack-env": "1.14.0",
     "@types/webpack-merge": "^4.1.5",
     "@types/ws": "6.0.3",
     "@types/yargs": "^13.0.3",
@@ -63,7 +64,7 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-node": "10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "husky": "^3.0.9",
+    "husky": "3.0.9",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "standard-version": "^7.0.0",

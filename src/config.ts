@@ -1,5 +1,5 @@
 import path from "path";
-import webpack, { Configuration } from "webpack";
+import { Configuration } from "webpack";
 import defaultsDeep from "lodash.defaultsdeep";
 import serveHandler from "serve-handler";
 import { URL } from "url";
@@ -25,7 +25,7 @@ declare module "webpack" {
 }
 
 /**
- * Default webpack-serve configuration
+ * Default serve-webpack configuration
  */
 export const getDefaultConfig = (
   path?: string,
@@ -76,7 +76,7 @@ export const getConfig = async (
 
   if (Array.isArray(webpackConfig)) {
     console.warn(
-      "Multiple Webpack configurations detected! Webpack-serve only supports one so first will be used"
+      "Multiple Webpack configurations detected! serve-webpack only supports one so first will be used"
     );
     webpackConfig = webpackConfig[0];
   }

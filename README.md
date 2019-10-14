@@ -1,1 +1,1 @@
-# @iiroj/webpack-serve
+# @iiroj/serve-webpack
