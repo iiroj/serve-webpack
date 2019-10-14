@@ -29,6 +29,7 @@ const watchHandler: webpack.ICompiler.Handler = (error, stats) => {
 
 type Argv = {
   config: string;
+  env: Record<string, string | boolean>;
   hot: boolean;
 };
 
@@ -36,8 +37,8 @@ type Argv = {
  * Main webpack-serve handler
  * @param argv command-line arguments
  */
-export const handler = async ({ config, hot }: Argv): Promise<void> => {
-  const { webpackConfig, serveConfig } = await getConfig(config);
+export const handler = async ({ config, env, hot }: Argv): Promise<void> => {
+  const { webpackConfig, serveConfig } = await getConfig(config, env);
 
   const compiler = webpack(webpackConfig);
   compiler.watch(webpackConfig.watchOptions || {}, watchHandler);

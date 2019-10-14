@@ -29,4 +29,17 @@ export const yargs = builder
     description: "Enable websocket server for HMR support",
     type: "boolean",
     default: true
+  })
+  .option("env", {
+    alias: "e",
+    description: "Environment variables passed to Webpack configuration",
+    type: "array"
+  })
+  .coerce("env", variables => {
+    if (Array.isArray(variables)) {
+      throw new Error(
+        `Env variables should use object notation: --env.foo=bar`
+      );
+    }
+    return variables;
   });

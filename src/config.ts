@@ -51,7 +51,7 @@ const inferPort = (
   return "";
 };
 
-type Env = Record<string, string>;
+type Env = Record<string, string | boolean>;
 type FnConfiguration = (env: Env) => Configuration;
 type WebpackConfiguration = Configuration | FnConfiguration;
 
