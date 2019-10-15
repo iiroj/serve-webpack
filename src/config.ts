@@ -33,7 +33,7 @@ export const getDefaultConfig = (
 ): ServeConfig => ({
   protocol: "http:",
   host: "localhost",
-  port: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000,
+  port: 3000,
   socketPath: "/__socket",
   path,
   publicPath
