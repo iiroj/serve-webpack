@@ -1,4 +1,5 @@
-import { createServer } from "http";
+import { createServer as createHTTPServer } from "http";
+import { createServer as createHTTPSServer } from "https";
 import webpack from "webpack";
 
 import { getConfig } from "./config";
@@ -51,7 +52,10 @@ export const handler = async ({ config, env, hot }: Argv): Promise<void> => {
     logger.info("compiling...")
   );
 
-  const server = createServer();
+  const server =
+    serveConfig.protocol === "https:"
+      ? createHTTPSServer()
+      : createHTTPServer();
   server.listen(serveConfig.port, () => {
     logger.info(`listening at ${serveConfig.resolvedUrl}`);
   });
