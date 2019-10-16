@@ -9,6 +9,10 @@
   "bugs": "https://github.com/iiroj/serve-webpack/issues",
   "main": "dist/handler.js",
   "bin": "dist/bin.js",
+  "files": [
+    "dist",
+    "client.js"
+  ],
   "engines": {
     "node": ">= 12.10"
   },
