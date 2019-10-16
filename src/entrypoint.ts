@@ -23,7 +23,7 @@ const prependEntry = async (
         unique.push(prep);
       }
     });
-    return [...prepended, ...unique];
+    return [...unique, ...entry];
   }
 
   if (typeof entry === "object") {
