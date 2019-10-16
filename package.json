@@ -15,7 +15,8 @@
   "scripts": {
     "lint": "eslint --ext .ts,.js .",
     "typecheck": "tsc -p tsconfig.json",
-    "build": "tsc --build tsconfig.build.json tsconfig.hot.json",
+    "prebuild": "rimraf dist client.js",
+    "build": "tsc --build tsconfig.build.json tsconfig.client.json",
     "watch": "npm run build -- --watch",
     "version": "standard-version --no-verify"
   },
@@ -50,15 +51,15 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
     "@types/lodash.defaultsdeep": "4.6.6",
-    "@types/node": "^12.7.12",
+    "@types/node": "^12.11.1",
     "@types/serve-handler": "6.1.0",
     "@types/webpack": "4.39.3",
-    "@types/webpack-env": "1.14.0",
+    "@types/webpack-env": "1.14.1",
     "@types/webpack-merge": "^4.1.5",
     "@types/ws": "6.0.3",
     "@types/yargs": "^13.0.3",
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.3.3",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
     "commitlint": "^8.2.0",
     "eslint": "6.5.1",
     "eslint-config-prettier": "^6.4.0",
@@ -67,9 +68,10 @@
     "husky": "3.0.9",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
     "standard-version": "^7.0.0",
     "typescript": "^3.6.4",
-    "webpack": "4.41.1"
+    "webpack": "4.41.2"
   },
   "keywords": [
     "dev-server",
