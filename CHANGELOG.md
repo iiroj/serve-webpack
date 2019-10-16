@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/iiroj/serve-webpack/compare/v0.0.1...v0.0.2) (2019-10-16)
+
+
+### Bug Fixes
+
+* allow newer versions of Webpack ([c0f589c](https://github.com/iiroj/serve-webpack/commit/c0f589c9221970082f626f5f5cd6c239443d453a))
+* apply correct entrypoints in array ([71e9db5](https://github.com/iiroj/serve-webpack/commit/71e9db503a75243747e7739ba94c1e2bdd5a4dbb))
+* include necessary files in publish ([d386117](https://github.com/iiroj/serve-webpack/commit/d386117986f0773e5b9b45270c9f52a2d5caeef8))
+
 ### 0.0.1 (2019-10-16)
 
 
