@@ -11,7 +11,11 @@ export const useHotMiddleware = (
   { socketPath, resolvedUrl }: ServeConfig
 ): void => {
   const ws = createWsServer(server, socketPath!);
-  logger.info(`HMR support enabled at ${resolvedUrl}/${socketPath}`);
+
+  const wsUrl = `${resolvedUrl}/${socketPath}`
+    .replace(/https:\/\//, "wss://")
+    .replace(/http:\/\//, "ws://");
+  logger.info(`HMR support enabled at ${wsUrl}`);
 
   let latestStats: Stats.ToJsonOutput;
 
