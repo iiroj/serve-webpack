@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/iiroj/serve-webpack/compare/v0.0.2...v0.0.3) (2019-10-17)
+
+
+### Bug Fixes
+
+* log socket url with correct scheme ([065c9c5](https://github.com/iiroj/serve-webpack/commit/065c9c523d811418729f8e9570ce32881ce3f344))
+* strip prefix from req.url before passing to serve-handler ([e6d979d](https://github.com/iiroj/serve-webpack/commit/e6d979d46832a62f4b6be3c51f86b997e7536306))
+
 ### [0.0.2](https://github.com/iiroj/serve-webpack/compare/v0.0.1...v0.0.2) (2019-10-16)
 
 
