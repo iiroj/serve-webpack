@@ -14,7 +14,7 @@
     "client.js"
   ],
   "engines": {
-    "node": ">= 12.10"
+    "node": ">=12.10"
   },
   "scripts": {
     "lint": "eslint --ext .ts,.js .",
@@ -40,42 +40,42 @@
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "npm run lint && npm run typecheck && npm test && npm run build"
+      "prerelease": "npm run lint && npm run typecheck && npm run build"
     }
   },
   "peerDependencies": {
-    "webpack": ">=4.41.1"
+    "webpack": ">=4.41.5"
   },
   "dependencies": {
-    "lodash.defaultsdeep": "4.6.1",
-    "serve-handler": "6.1.2",
-    "ws": "7.1.2",
-    "yargs": "14.2.0"
+    "lodash.defaultsdeep": "^4.6.1",
+    "serve-handler": "^6.1.2",
+    "ws": "^7.2.1",
+    "yargs": "^15.0.2"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
     "@types/lodash.defaultsdeep": "4.6.6",
-    "@types/node": "^12.11.1",
+    "@types/node": "^13.1.1",
     "@types/serve-handler": "6.1.0",
-    "@types/webpack": "4.39.3",
+    "@types/webpack": "4.41.0",
     "@types/webpack-env": "1.14.1",
     "@types/webpack-merge": "^4.1.5",
-    "@types/ws": "6.0.3",
-    "@types/yargs": "^13.0.3",
-    "@typescript-eslint/eslint-plugin": "^2.4.0",
-    "@typescript-eslint/parser": "^2.4.0",
+    "@types/ws": "6.0.4",
+    "@types/yargs": "^13.0.4",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
     "commitlint": "^8.2.0",
-    "eslint": "6.5.1",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-node": "10.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "husky": "3.0.9",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "3.1.0",
+    "lint-staged": "^10.0.0-beta.14",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "standard-version": "^7.0.0",
-    "typescript": "^3.6.4",
-    "webpack": "4.41.2"
+    "standard-version": "^7.0.1",
+    "typescript": "^3.7.4",
+    "webpack": ">=4.41.5"
   },
   "keywords": [
     "dev-server",

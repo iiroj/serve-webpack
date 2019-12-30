@@ -33,10 +33,7 @@ export const useHotMiddleware = (
     const modules =
       jsonStats.modules &&
       jsonStats.modules.reduce(
-        (obj, mod) => {
-          obj[mod.id] = mod.name;
-          return obj;
-        },
+        (modules, { id, name }) => ({ ...modules, [id]: name }),
         {} as Record<string, string>
       );
 

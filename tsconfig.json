@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "es6"
+    "target": "es6",
+    "types": []
   },
   "include": ["src"],
   "exclude": ["dist", "src/client.js"]
